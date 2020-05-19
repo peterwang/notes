@@ -435,6 +435,8 @@ Error message and password prompt
 
 <li>数学公式测试</li>
 
+<li>cl-opengl</li>
+
 <li>CS Papers</li>
 
 <li>Innodb internals</li>
@@ -10085,7 +10087,7 @@ Error message and password prompt
 <div created="20200503160841496" creator="P" modified="20200503160847620" modifier="Peter Wan" title="$:/status/UserName">
 <pre>Peter Wang</pre>
 </div>
-<div created="20200506014249432" creator="Peter Wang" list="[[Innodb internals]]" modified="20200506014249432" modifier="Peter Wang" title="$:/StoryList">
+<div created="20200519145030134" creator="Peter Wang" list="cl-opengl 代码片段测试 GettingStarted" modified="20200519145030134" modifier="Peter Wang" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20200505031251901" creator="Peter Wang" modified="20200505031316767" modifier="Peter Wang" title="$:/temp/advancedsearch">
@@ -10139,11 +10141,11 @@ Error message and password prompt
         },
         &quot;$:/info/browser/screen/width&quot;: {
             &quot;title&quot;: &quot;$:/info/browser/screen/width&quot;,
-            &quot;text&quot;: &quot;375&quot;
+            &quot;text&quot;: &quot;1920&quot;
         },
         &quot;$:/info/browser/screen/height&quot;: {
             &quot;title&quot;: &quot;$:/info/browser/screen/height&quot;,
-            &quot;text&quot;: &quot;667&quot;
+            &quot;text&quot;: &quot;1080&quot;
         },
         &quot;$:/info/browser/language&quot;: {
             &quot;title&quot;: &quot;$:/info/browser/language&quot;,
@@ -11280,6 +11282,21 @@ $$e=\lim _{n\to \infty }\left(1+{\frac {1}{n}}\right)^{n}$$
 &lt;&lt;&lt;
 $$\pi = 4 * atan(1) $$
 &lt;&lt;&lt;</pre>
+</div>
+<div created="20200519145036794" creator="Peter Wang" modified="20200519145128639" modifier="Peter Wang" tags="" title="cl-opengl">
+<pre>
+```
+(defun draw-stats-info ()
+  (gl:window-pos 20 20)
+  (gl:color 0 1 0)
+  (glut:bitmap-string
+   glut:+bitmap-9-by-15+
+   (format nil &quot;l-theta: ~$, l-phi: ~$&quot;
+	   (nth-value 1 (floor (/ (* 180.0 light-theta) pi) 360.0))
+	   (nth-value 1 (floor (/ (* 180.0 light-phi) pi) 360.0))
+	   )))
+```
+</pre>
 </div>
 <div created="20200505064820719" creator="Peter Wang" modified="20200505064903481" modifier="Peter Wang" tags="" title="CS Papers">
 <pre>[[List of Papers|https://en.m.wikipedia.org/wiki/List_of_important_publications_in_computer_science]]</pre>
