@@ -10736,14 +10736,25 @@ $$
 <div created="20200504070234301" creator="Peter Wang" modified="20200504070238344" modifier="Peter Wang" title="Peter Wang">
 <pre>It's me.</pre>
 </div>
-<div created="20210721144041458" creator="Peter Wang" modified="20210721150036219" modifier="Peter Wang" tags="" title="Quasiquoting">
+<div created="20210721144041458" creator="Peter Wang" modified="20210721152254000" modifier="Peter Wang" tags="" title="Quasiquoting">
 <pre>* ``quasiquote(`)``, `unquote(,)` and `unquote-splicing(,@)`
-* Examples
+* `quote` example
 ```
 '(+ 1 (* 2 3))
 =&gt; (list '+ '1 '(* 2 3))
 =&gt; (list '+ 1 (list '* '2 '3))
 =&gt; (list '+ 1 (list '* 2 3))
+```
+
+* `qusiquote` example
+
+```
+`(1 `,(+ 1 ,(+ 2 3)) 4)
+=&gt; (list `1 ``,(+ 1 ,(+ 2 3)) `4)
+=&gt; (list 1 `(quasiquote (unquote (+ 1 ,(+ 2 3)))) 4)
+=&gt; (list 1 (list `quasiquote (list `unquote `(+ 1 ,(+ 2 3)))) 4)
+=&gt; (list 1 (list 'quasiquote (list 'unquote (list '+ '1 `,(+ 2 3)))) 4)
+=&gt; (list 1 (list 'quasiquote (list 'unquote (list '+ 1 5))) 4)
 ```</pre>
 </div>
 <div created="20200504162516484" creator="Peter Wang" modified="20200504162605357" modifier="Peter Wang" tags="" title="WikiText Links">
