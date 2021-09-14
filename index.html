@@ -10384,7 +10384,7 @@ Error message and password prompt
 <div created="20200503160841496" creator="P" modified="20200503160847620" modifier="Peter Wan" title="$:/status/UserName">
 <pre>Peter Wang</pre>
 </div>
-<div list="Index" title="$:/StoryList">
+<div created="20210912011719945" creator="Peter Wang" list="Index [[Clojure Compiler Internals]]" modified="20210912011719945" modifier="Peter Wang" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20210329014506089" creator="Peter Wang" modified="20210329014506089" modifier="Peter Wang" title="$:/theme">
@@ -10667,8 +10667,14 @@ $$
 	   )))
 ```</pre>
 </div>
-<div created="20210911061334624" creator="Peter Wang" modified="20210911061346095" modifier="Peter Wang" tags="lisp clojure" title="Clojure Compiler Internals">
-<pre></pre>
+<div created="20210911061334624" creator="Peter Wang" modified="20210914011520093" modifier="Peter Wang" tags="lisp clojure" title="Clojure Compiler Internals">
+<pre>* Clojure 是基于 JVM 的 Lisp 方言。
+
+* `clojure.lang.Compiler/specials` 包含了全部 Clojure 基本操作符 （`Special Operator`），任何 Clojure 代码经过转换（`Macro Expanding`），最终只会包含这些基本操作符。
+
+*  `clojure.lang.Compiler/load` 和 `clojure.lang.Compiler/eval` 是编译器入口
+
+* `clojure.lang.Compiler$Expr` 的 `eval` 和 `emit` 方法</pre>
 </div>
 <div created="20200627072130964" creator="Peter Wang" modified="20210328075725577" modifier="Peter Wang" tags="" title="Continuation">
 <pre>!!! References
