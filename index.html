@@ -10667,14 +10667,14 @@ $$
 	   )))
 ```</pre>
 </div>
-<div created="20210911061334624" creator="Peter Wang" modified="20210914011520093" modifier="Peter Wang" tags="lisp clojure" title="Clojure Compiler Internals">
+<div created="20210911061334624" creator="Peter Wang" modified="20210914014048796" modifier="Peter Wang" tags="lisp clojure" title="Clojure Compiler Internals">
 <pre>* Clojure 是基于 JVM 的 Lisp 方言。
 
 * `clojure.lang.Compiler/specials` 包含了全部 Clojure 基本操作符 （`Special Operator`），任何 Clojure 代码经过转换（`Macro Expanding`），最终只会包含这些基本操作符。
 
 *  `clojure.lang.Compiler/load` 和 `clojure.lang.Compiler/eval` 是编译器入口
 
-* `clojure.lang.Compiler$Expr` 的 `eval` 和 `emit` 方法</pre>
+* `clojure.lang.Compiler$Expr` 的 `eval` 和 `emit` 方法，分别对应表达式的求值（`Evaluation`）和编译（`Compilation`），比如，`def` 的初始值的求值会调用初始值表达式的 `eval`，如果初始值表达式是函数表达式（`FnExpr`），函数表达式的分析（`analyzing` / `parsing`）过程，会相继触发函数表达式和其子表达式的 `emit` 方法，最后生成字节码，并通过 `DynamicClassLoader` 载入字节码，生成对应的 `class`。函数表达式的求值初始化对应的`class`，生成函数对象。</pre>
 </div>
 <div created="20200627072130964" creator="Peter Wang" modified="20210328075725577" modifier="Peter Wang" tags="" title="Continuation">
 <pre>!!! References
