@@ -10667,7 +10667,7 @@ $$
 	   )))
 ```</pre>
 </div>
-<div created="20210911061334624" creator="Peter Wang" modified="20210914014945652" modifier="Peter Wang" tags="lisp clojure" title="Clojure Compiler Internals">
+<div created="20210911061334624" creator="Peter Wang" modified="20210914025428374" modifier="Peter Wang" tags="lisp clojure" title="Clojure Compiler Internals">
 <pre>* Clojure 是基于 JVM 的 Lisp 方言。
 
 * `clojure.lang.Compiler/specials` 包含了全部 Clojure 基本操作符 （`Special Operator`），任何 Clojure 代码经过转换（`Macro Expanding`），最终只会包含这些基本操作符。
@@ -10680,7 +10680,14 @@ $$
 
 *** 如果初始值是函数表达式（`FnExpr`），函数表达式的分析（`analyzing` / `parsing`）过程，会相继触发函数表达式和其子表达式的 `emit` 方法，最后生成字节码，并通过 `DynamicClassLoader` 载入字节码，生成对应的 `class`。函数表达式的求值初始化对应的`class`，生成函数对象，绑定到 `var` 的 `rootValue`；
 
-*** 如果初始值是其它表达式，则触发对应表达式的 `eval`</pre>
+*** 如果初始值是其它表达式，则触发对应表达式的 `eval`
+
+* 表达式的 `context` 有四种：`statement` `expression` `return` `eval`，
+** `statement`，需要表达式的 side effects，不需要表达式的值
+** `expression`，需要表达式的值
+** `return`，函数的 `tail position`
+** `eval`，`Compiler` 入口
+</pre>
 </div>
 <div created="20200627072130964" creator="Peter Wang" modified="20210328075725577" modifier="Peter Wang" tags="" title="Continuation">
 <pre>!!! References
