@@ -10384,7 +10384,7 @@ Error message and password prompt
 <div created="20200503160841496" creator="P" modified="20200503160847620" modifier="Peter Wan" title="$:/status/UserName">
 <pre>Peter Wang</pre>
 </div>
-<div list="Index" title="$:/StoryList">
+<div created="20211011045824364" creator="Peter Wang" list="Index [[Clojure Compiler Internals]]" modified="20211011045824364" modifier="Peter Wang" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20210329014506089" creator="Peter Wang" modified="20210329014506089" modifier="Peter Wang" title="$:/theme">
@@ -10667,7 +10667,7 @@ $$
 	   )))
 ```</pre>
 </div>
-<div created="20210911061334624" creator="Peter Wang" modified="20210914025428374" modifier="Peter Wang" tags="lisp clojure" title="Clojure Compiler Internals">
+<div created="20210911061334624" creator="Peter Wang" modified="20211011052026186" modifier="Peter Wang" tags="lisp clojure" title="Clojure Compiler Internals">
 <pre>* Clojure 是基于 JVM 的 Lisp 方言。
 
 * `clojure.lang.Compiler/specials` 包含了全部 Clojure 基本操作符 （`Special Operator`），任何 Clojure 代码经过转换（`Macro Expanding`），最终只会包含这些基本操作符。
@@ -10687,6 +10687,14 @@ $$
 ** `expression`，需要表达式的值
 ** `return`，函数的 `tail position`
 ** `eval`，`Compiler` 入口
+
+* `clojure.core/compile` 和 `clojure.core/require` 机制
+** 都会调用 `clojure.core/load`，`clojure.lang.RT/load`
+** `clojure.lang.RT/load` 优先尝试载入加载类，类似 `foo.bar__init`，如果失败
+** 如果是 `require`， 则调用 `Compiler/load` 载入 clj 源文件 `Compiler/load`  依次 `read`， `eval`  clj文件中的顶层form
+** 如果是 `compile`，则调用 `RT/Compiler`，`Compiler/compile`，`Compiler/compile1` 依次`read`, `comile1` 文件中的顶层 form，并且生成 `__init` 类
+** `__init` 类的 static 中依次调用 __init&lt;N&gt; 来初始化 static 成员，然后调用 __init.load() 来载入和初始化该 clj 文件顶层函数对应的类 
+  
 </pre>
 </div>
 <div created="20200627072130964" creator="Peter Wang" modified="20210328075725577" modifier="Peter Wang" tags="" title="Continuation">
